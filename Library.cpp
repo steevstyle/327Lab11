@@ -12,33 +12,48 @@ Library::Library(){
     }
 }
 
-bool Library::addBook(int bookName) {
-    if (bookName < 0 || bookName > 9) {
-        return false;
+bool Library::addBook(string bookName) {
+    //Adds the given book to the library and returns zero
+    //returns false if the book already exists or if the library
+    //  already has 10 books
+
+//check if book already exists
+    for(int i = 0; i < 10; i++){
+        if(books[i] == bookName){
+            return false;
+        }
     }
-    if (books[bookName] != "") {
-        return false;
+    //check if library has 10 books
+    for(int i = 0; i < 10; i++){
+        if(books[i] == ""){
+            books[i] = bookName;
+            return true;
+        }
     }
-    books[bookName] = bookName;
-    return true;
+    return false;
+
+
 }
 
-bool Library::removeBook(int bookName) {
-    if (bookName < 0 || bookName > 9) {
-        return false;
+bool Library::removeBook(string bookName) {
+    //Removes the given book name from the library by setting the
+    //  corresponding string to "", and returns true
+    //returns false if the library does not have the given book
+    for(int i = 0; i < 10; i++){
+        if(books[i] == bookName){
+            books[i] = "";
+            return true;
+        }
     }
-    if (books[bookName] == "") {
-        return false;
-    }
-    books[bookName] = "";
-    return true;
+    return false;
 }
+
 
 void Library::print() {
-    for (int i = 0; i < 10; i++) {
-        if (books[i] != "") {
-            cout << books[i] << endl;
-        }
+    cout<<"Books in library:"<<endl;
+    int c = 0;
+    while(books[c] != ""){
+        cout << books[c++] << endl;
     }
 }
 

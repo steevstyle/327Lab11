@@ -16,17 +16,13 @@ int main(){
         if(command == "a"){
             cin >> bookName;
             success = library.addBook(bookName);
-            if(success){
-                cout << "Book added" << endl;
-            }else{
+            if(!success)
                 cout << "Book not added" << endl;
-            }
+
         }else if(command == "r"){
             cin >> bookName;
             success = library.removeBook(bookName);
-            if(success){
-                cout << "Book removed" << endl;
-            }else{
+            if(!success){
                 cout << "Book not removed" << endl;
             }
         }else if(command == "p"){
